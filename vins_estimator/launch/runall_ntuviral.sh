@@ -1,5 +1,8 @@
-catkin_make -C /home/$USER/dev_ws ;
-source /home/$USER/dev_ws/devel/setup.bash
+
+export USER=workspace
+
+catkin_make -C /workspace/catkin_ws ;
+source /workspace/catkin_ws/devel/setup.bash ;
 
 
 # Get the current directory
@@ -12,11 +15,11 @@ cd $CURR_DIR
 echo CURRENT DIR: $CURR_DIR
 echo VINS DIR:    $PACKAGE_DIR
 
-export EPOC_DIR=/home/$USER/nucssd2/MATLAB_WS/RAL_VIRAL_SLAM/ntuviral_vinsfusion
-export DATASET_LOCATION=/home/$USER/DATASETS/NTU_VIRAL/
+export EPOC_DIR=/workspace/result
+export DATASET_LOCATION=/workspace/NTU_VIRAL_DATASET
 # export DATASET_LOCATION=/media/$USER/myHPSSD/NTU_VIRAL
 
-export CAPTURE_SCREEN=false;
+export CAPTURE_SCREEN=true;
 export LOG_DATA=true;
 
 
