@@ -19,7 +19,7 @@ export EPOC_DIR=/workspace/result
 export DATASET_LOCATION=/workspace/NTU_VIRAL_DATASET
 # export DATASET_LOCATION=/media/$USER/myHPSSD/NTU_VIRAL
 
-export CAPTURE_SCREEN=true;
+export CAPTURE_SCREEN=false;
 export LOG_DATA=true;
 
 
