@@ -24,13 +24,8 @@ export LOG_DATA=false;
 
 wait;
 
-export EPOC_DIR=$EPOC_DIR;
-export DATASET_LOCATION=$DATASET_LOCATION;
-export ROS_PKG_DIR=$PACKAGE_DIR;
 export EXP_NAME=eee_01;
-export LOG_DATA=$LOG_DATA;
 export LOG_DUR=450;
-export FUSE_UWB=0;
 export FUSE_VIS=1;
 export ANC_ID_MAX=-1;
 
