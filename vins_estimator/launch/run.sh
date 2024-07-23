@@ -32,7 +32,6 @@ export LOG_DATA=$LOG_DATA;
 export LOG_DUR=450;
 export FUSE_UWB=0;
 export FUSE_VIS=1;
-export UWB_BIAS=0.75;
 export ANC_ID_MAX=-1;
 
 export BAG_DUR=$(rosbag info $DATASET_LOCATION/$EXP_NAME/$EXP_NAME.bag | grep 'duration' | sed 's/^.*(//' | sed 's/s)//');
@@ -49,13 +48,6 @@ export EXP_OUTPUT_DIR=${EXP_OUTPUT_DIR}_vis;
 fi
 echo OUTPUT DIR: $EXP_OUTPUT_DIR;
 
-export BA_LOOP_LOG_DIR=/home/$USER;
-if $LOG_DATA
-then
-export BA_LOOP_LOG_DIR=$EXP_OUTPUT_DIR;
-fi
-echo BA LOG DIR: $BA_LOOP_LOG_DIR;
-
 mkdir -p $EXP_OUTPUT_DIR/ ;
 cp -R $ROS_PKG_DIR/../config $EXP_OUTPUT_DIR;
 cp -R $ROS_PKG_DIR/launch $EXP_OUTPUT_DIR;
@@ -64,30 +56,5 @@ log_dir:=$VIRAL_OUTPUT_DIR \
 autorun:=true \
 bag_file:=$DATASET_LOCATION/$EXP_NAME/$EXP_NAME.bag \
 & \
-
-if $LOG_DATA
-then
-echo LOGGING ON;
-sleep 5;
-rosparam dump $EXP_OUTPUT_DIR/allparams.yaml;
-timeout $LOG_DUR rostopic echo -p --nostr --noarr /vins_estimator/imu_propagate \
-> $EXP_OUTPUT_DIR/vio_odom.csv  \
-& \
-timeout $LOG_DUR rostopic echo -p --nostr --noarr /vins_estimator/odometry \
-> $EXP_OUTPUT_DIR/opt_odom.csv \
-& \
-timeout $LOG_DUR rostopic echo -p --nostr --noarr /leica/pose/relative \
-> $EXP_OUTPUT_DIR/leica_pose.csv \
-& \
-timeout $LOG_DUR rostopic echo -p --nostr --noarr /dji_sdk/imu \
-> $EXP_OUTPUT_DIR/dji_sdk_imu.csv \
-& \
-timeout $LOG_DUR rostopic echo -p --nostr --noarr /imu/imu \
-> $EXP_OUTPUT_DIR/vn100_imu.csv \
-;
-else
-echo LOGGING OFF;
-sleep $LOG_DUR;
-fi
 
 wait;
