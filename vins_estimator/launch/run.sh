@@ -5,7 +5,6 @@ export USER=workspace
 catkin_make -C /workspace/catkin_ws ;
 source /workspace/catkin_ws/devel/setup.bash ;
 
-
 # Get the current directory
 CURR_DIR=$(pwd)
 # Get the location of the viral package
@@ -18,9 +17,6 @@ echo VINS DIR:    $PACKAGE_DIR
 
 export EPOC_DIR=/workspace/result
 export DATASET_LOCATION=/workspace/NTU_VIRAL_DATASET
-# export DATASET_LOCATION=/media/$USER/myHPSSD/NTU_VIRAL
-
-export LOG_DATA=false;
 
 wait;
 
@@ -46,10 +42,9 @@ echo OUTPUT DIR: $EXP_OUTPUT_DIR;
 mkdir -p $EXP_OUTPUT_DIR/ ;
 cp -R $ROS_PKG_DIR/../config $EXP_OUTPUT_DIR;
 cp -R $ROS_PKG_DIR/launch $EXP_OUTPUT_DIR;
-roslaunch vins run_ntuviral.launch log_dir:=$EXP_OUTPUT_DIR \
+roslaunch vins vio.launch log_dir:=$EXP_OUTPUT_DIR \
 log_dir:=$VIRAL_OUTPUT_DIR \
 autorun:=true \
-bag_file:=$DATASET_LOCATION/$EXP_NAME/$EXP_NAME.bag \
-& \
+bag_file:=$DATASET_LOCATION/$EXP_NAME/$EXP_NAME.bag 
 
 wait;
