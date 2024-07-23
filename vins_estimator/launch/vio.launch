@@ -1,17 +1,11 @@
 <?xml version="1.0"?>
 <launch>
 
-
     <!-- ######### Enable the automatic change to new dataset ########### -->
     <arg name="autorun"     default = "false" />
 
     <!-- log direction for the vis aid -->
     <arg name="log_dir" default="/home/$(env USER)/" />
-
-
-    <!-- ######### Choose the dataset ################################### -->
-    <arg name="bag_file" default = "/media/oblam/mySataSSD2/NTU_VIRAL/eee_01/eee_01_mod.bag" />
-
 
     <!-- VINS node -->
     <node respawn="true" pkg="vins" type="vins_node" name="vins_estimator"

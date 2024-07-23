@@ -15,7 +15,6 @@ cd $CURR_DIR
 echo CURRENT DIR: $CURR_DIR
 echo VINS DIR:    $PACKAGE_DIR
 
-export EPOC_DIR=/workspace/result
 export DATASET_LOCATION=/workspace/NTU_VIRAL_DATASET
 
 wait;
@@ -32,16 +31,6 @@ echo "BAG DURATION:" $BAG_DUR "=> LOG_DUR:" $LOG_DUR;
 
 let ANC_MAX=ANC_ID_MAX+1
 
-export EXP_OUTPUT_DIR=$EPOC_DIR/result_${EXP_NAME}_${ANC_MAX}anc;
-if ((FUSE_VIS==1))
-then
-export EXP_OUTPUT_DIR=${EXP_OUTPUT_DIR}_vis;
-fi
-echo OUTPUT DIR: $EXP_OUTPUT_DIR;
-
-mkdir -p $EXP_OUTPUT_DIR/ ;
-cp -R $ROS_PKG_DIR/../config $EXP_OUTPUT_DIR;
-cp -R $ROS_PKG_DIR/launch $EXP_OUTPUT_DIR;
 roslaunch vins vio.launch log_dir:=$EXP_OUTPUT_DIR \
 log_dir:=$VIRAL_OUTPUT_DIR \
 autorun:=true \
