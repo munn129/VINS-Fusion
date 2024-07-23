@@ -20,11 +20,7 @@ export EPOC_DIR=/workspace/result
 export DATASET_LOCATION=/workspace/NTU_VIRAL_DATASET
 # export DATASET_LOCATION=/media/$USER/myHPSSD/NTU_VIRAL
 
-export CAPTURE_SCREEN=false;
-export LOG_DATA=true;
-
-
-#region Run each dataset with VINS ------------------------------------------------------------------------------------
+export LOG_DATA=false;
 
 wait;
 
@@ -32,7 +28,6 @@ export EPOC_DIR=$EPOC_DIR;
 export DATASET_LOCATION=$DATASET_LOCATION;
 export ROS_PKG_DIR=$PACKAGE_DIR;
 export EXP_NAME=eee_01;
-export CAPTURE_SCREEN=$CAPTURE_SCREEN;
 export LOG_DATA=$LOG_DATA;
 export LOG_DUR=450;
 export FUSE_UWB=0;
@@ -70,18 +65,6 @@ autorun:=true \
 bag_file:=$DATASET_LOCATION/$EXP_NAME/$EXP_NAME.bag \
 & \
 
-if $CAPTURE_SCREEN
-then
-echo CAPTURING SCREEN ON;
-sleep 1;
-ffmpeg -video_size 1920x1080 -framerate 1 -f x11grab -i :0.0+1920,0 \
--loglevel quiet -t $LOG_DUR -y $EXP_OUTPUT_DIR/$EXP_NAME.mp4 \
-& \
-else
-echo CAPTURING SCREEN OFF;
-sleep 1;
-fi
-
 if $LOG_DATA
 then
 echo LOGGING ON;
@@ -108,6 +91,3 @@ sleep $LOG_DUR;
 fi
 
 wait;
-# poweroff;
-
-#endregion ## Poweroff ------------------------------------------------------------------------------------------------
