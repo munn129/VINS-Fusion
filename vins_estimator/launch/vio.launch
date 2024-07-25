@@ -5,7 +5,7 @@
     <arg name="autorun"     default = "false" />
 
     <!-- log direction for the vis aid -->
-    <arg name="log_dir" default="/home/(env USER)" />
+    <arg name="log_dir" default="/(env USER)" />
 
     <!-- VINS node -->
     <node respawn="true" pkg="vins" type="vins_node" name="vins_estimator"
