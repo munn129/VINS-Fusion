@@ -3,17 +3,15 @@
 #common parameters
 #support: 1 imu 1 cam; 1 imu 2 cam: 2 cam; 
 imu:          1         
-num_of_cam:   2 
+num_of_cam:   1
 
-imu_topic:    "/imu/imu"
-image0_topic: "/right/image_raw"
-image1_topic: "/left/image_raw"
+imu_topic:    "/ublox/imu_meas"
+image0_topic: "/camera/image_color/compressed"
 output_path:  "/home/tony-ws1/output/"
 
-cam0_calib:   "camRight.yaml"
-cam1_calib:   "camLeft.yaml"
-image_width:  752
-image_height: 480
+cam0_calib:   "camLeft.yaml"
+image_width:  1600
+image_height: 1100
    
 
 # Extrinsic parameter between IMU and Camera.
@@ -28,15 +26,6 @@ body_T_cam0: !!opencv-matrix
            0.99974371,  0.01176483,  0.01934191,  0.1347802,
           -0.01205075,  0.99981884,  0.01473287,  0.01465067,
            0.00000000,  0.00000000,  0.00000000,  1.00000000]
-
-body_T_cam1: !!opencv-matrix
-   rows: 4
-   cols: 4
-   dt: d
-   data: [ 0.02183084, -0.01312053,  0.99967558,  0.00552943,
-           0.99975965,  0.00230088, -0.02180248, -0.12431302,
-          -0.00201407,  0.99991127,  0.01316761,  0.01614686, 
-           0.00000000,  0.00000000,  0.00000000,  1.00000000 ]
 
 #Multiple thread support
 multiple_thread: 1

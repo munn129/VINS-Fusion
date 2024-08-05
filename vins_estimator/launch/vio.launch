@@ -9,11 +9,11 @@
 
     <!-- VINS node -->
     <node respawn="true" pkg="vins" type="vins_node" name="vins_estimator"
-            args="$(find vins)/../config/ntuviral/viral_stereo_imu_config.yaml"
+            args="$(find vins)/../config/mobinha_racing/mobinha_config.yaml"
             output="screen"> </node>
 
     <node respawn="true" pkg="loop_fusion" type="loop_fusion_node" name="loop_fusion"
-            args="$(find vins)/../config/ntuviral/viral_stereo_imu_config.yaml" output="screen">
+            args="$(find vins)/../config/mobinha_racing/mobinha_config.yaml" output="screen">
             <param name="pose_graph_save_path" value="$(arg log_dir)/vins_ba_"/>
     </node>
 
