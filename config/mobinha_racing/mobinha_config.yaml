@@ -6,7 +6,7 @@ imu:          1
 num_of_cam:   1
 
 imu_topic:    "/ublox/imu_meas"
-image0_topic: "/camera/image_color/compressed"
+image0_topic: "/camera/image_raw"
 output_path:  "/home/tony-ws1/output/"
 
 cam0_calib:   "camLeft.yaml"
