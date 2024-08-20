@@ -17,10 +17,6 @@
             <param name="pose_graph_save_path" value="$(arg log_dir)/vins_ba_"/>
     </node>
 
-    <!-- Visualization node -->
-    <!-- <node pkg="rviz" type="rviz" name="rviz" respawn="true"
-          args="-d $(find vins)/../config/mobinha_racing/rviz_ntuviral.rviz" /> -->
-
     <!-- Static transform for vizualization -->
     <node pkg="tf" type="static_transform_publisher" name="world_vio_init_pub" args="0 0 0 0 0 0 1 world vio_init 1" />
 
