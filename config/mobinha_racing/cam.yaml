@@ -1,0 +1,19 @@
+%YAML:1.0
+---
+#camera calibration 
+model_type:   PINHOLE
+camera_name:  camera
+image_width:  1600
+image_height: 1100
+
+# NTU VIRAL datasets
+distortion_parameters:
+   k1: -0.12859
+   k2:  0.07735
+   p1:  0.00074
+   p2:  0.00040
+projection_parameters:
+   fx: 903.89507
+   fy: 902.75920
+   cx: 800.87137
+   cy: 554.38452
