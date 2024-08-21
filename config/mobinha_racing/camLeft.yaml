@@ -8,12 +8,12 @@ image_height: 1100
 
 # NTU VIRAL datasets
 distortion_parameters:
-   k1: -0.12859
-   k2:  0.07735
-   p1:  0.00074
-   p2:  0.00040
+   k1: -0.13309
+   k2:  0.08143
+   p1:  0.00023
+   p2:  0.00043
 projection_parameters:
-   fx: 903.89507
-   fy: 902.75920
-   cx: 800.87137
-   cy: 554.38452
+   fx: 903.56583
+   fy: 902.47901
+   cx: 800.04169
+   cy: 556.80513
